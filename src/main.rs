@@ -290,12 +290,12 @@ fn main() {
         }
     });
 
-    let server = Server::http("0.0.0.0:9090").unwrap_or_else(|e| {
+    let server = Server::http("0.0.0.0:9091").unwrap_or_else(|e| {
         eprintln!("Failed to start HTTP server: {e}");
         std::process::exit(1);
     });
 
-    println!("Listening on http://0.0.0.0:9090/metrics");
+    println!("Listening on http://0.0.0.0:9091/metrics");
 
     for request in server.incoming_requests() {
         let encoder = TextEncoder::new();
