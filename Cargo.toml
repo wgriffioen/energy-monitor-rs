@@ -4,3 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+dsmr-parse = "0.4.2"
+serialport = "4"
+prometheus = "0.13"
+tiny_http = "0.12"
