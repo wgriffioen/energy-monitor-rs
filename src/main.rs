@@ -1,6 +1,6 @@
 use std::thread;
 use std::time::Duration;
-
+use clap::Parser;
 use dsmr_parse::Telegram;
 use prometheus::{Encoder, Gauge, IntGauge, TextEncoder};
 use tiny_http::{Header, Response, Server};
@@ -261,15 +261,32 @@ impl Metrics {
     }
 }
 
+#[derive(Parser, Debug)]
+struct Args {
+    /// The serial port to read from, e.g. /dev/ttyUSB0
+    #[arg(long)]
+    port: String,
+
+    /// The baud rate to use, e.g. 115200
+    #[arg(short,long, default_value = "115200")]
+    baud_rate: u32,
+
+    /// The port to serve metrics on
+    #[arg(short, long, default_value = "9091")]
+    metric_port: u16,
+}
+
 fn main() {
+    let args = Args::parse();
+
     let metrics = Metrics::register();
 
     thread::spawn(move || {
-        let mut port = serialport::new("/dev/ttyUSB0", 115_200)
+        let mut port = serialport::new(&args.port, args.baud_rate)
             .timeout(Duration::from_secs(30))
             .open()
             .unwrap_or_else(|e| {
-                eprintln!("Failed to open /dev/ttyUSB0: {e}");
+                eprintln!("Failed to open {}: {e}", args.port);
                 std::process::exit(1);
             });
 
@@ -289,12 +306,14 @@ fn main() {
         }
     });
 
-    let server = Server::http("0.0.0.0:9091").unwrap_or_else(|e| {
+    let server_address = format!("0.0.0.0:{}", args.metric_port);
+
+    let server = Server::http(&server_address).unwrap_or_else(|e| {
         eprintln!("Failed to start HTTP server: {e}");
         std::process::exit(1);
     });
 
-    println!("Listening on http://0.0.0.0:9091/metrics");
+    println!("Listening on http://{}/metrics", server_address);
 
     for request in server.incoming_requests() {
         let encoder = TextEncoder::new();
