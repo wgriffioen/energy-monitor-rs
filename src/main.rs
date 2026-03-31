@@ -39,137 +39,137 @@ impl Metrics {
     fn register() -> Self {
         Self {
             electricity_consumed_tariff_1: prometheus::register_gauge!(
-                "electricity_consumed_tariff_1_kwh",
+                "dsmr_electricity_consumed_tariff_1_kwh",
                 "Total electricity consumed on tariff 1 in kWh"
             )
             .unwrap(),
             electricity_consumed_tariff_2: prometheus::register_gauge!(
-                "electricity_consumed_tariff_2_kwh",
+                "dsmr_electricity_consumed_tariff_2_kwh",
                 "Total electricity consumed on tariff 2 in kWh"
             )
             .unwrap(),
             electricity_generated_tariff_1: prometheus::register_gauge!(
-                "electricity_generated_tariff_1_kwh",
+                "dsmr_electricity_generated_tariff_1_kwh",
                 "Total electricity generated on tariff 1 in kWh"
             )
             .unwrap(),
             electricity_generated_tariff_2: prometheus::register_gauge!(
-                "electricity_generated_tariff_2_kwh",
+                "dsmr_electricity_generated_tariff_2_kwh",
                 "Total electricity generated on tariff 2 in kWh"
             )
             .unwrap(),
             power: prometheus::register_gauge!(
-                "power_watts",
+                "dsmr_power_watts",
                 "Current power consumption in W"
             )
             .unwrap(),
             return_power: prometheus::register_gauge!(
-                "return_power_watts",
+                "dsmr_return_power_watts",
                 "Current power delivery (solar/generation) in W"
             )
             .unwrap(),
             power_failure_count: prometheus::register_int_gauge!(
-                "power_failures_total",
+                "dsmr_power_failures_total",
                 "Number of power failures"
             )
             .unwrap(),
             long_power_failure_count: prometheus::register_int_gauge!(
-                "long_power_failures_total",
+                "dsmr_long_power_failures_total",
                 "Number of long power failures"
             )
             .unwrap(),
             voltage_sag_l1_count: prometheus::register_int_gauge!(
-                "voltage_sags_l1_total",
+                "dsmr_voltage_sags_l1_total",
                 "Number of voltage sags on L1"
             )
             .unwrap(),
             voltage_sag_l2_count: prometheus::register_int_gauge!(
-                "voltage_sags_l2_total",
+                "dsmr_voltage_sags_l2_total",
                 "Number of voltage sags on L2"
             )
             .unwrap(),
             voltage_sag_l3_count: prometheus::register_int_gauge!(
-                "voltage_sags_l3_total",
+                "dsmr_voltage_sags_l3_total",
                 "Number of voltage sags on L3"
             )
             .unwrap(),
             voltage_swell_l1_count: prometheus::register_int_gauge!(
-                "voltage_swells_l1_total",
+                "dsmr_voltage_swells_l1_total",
                 "Number of voltage swells on L1"
             )
             .unwrap(),
             voltage_swell_l2_count: prometheus::register_int_gauge!(
-                "voltage_swells_l2_total",
+                "dsmr_voltage_swells_l2_total",
                 "Number of voltage swells on L2"
             )
             .unwrap(),
             voltage_swell_l3_count: prometheus::register_int_gauge!(
-                "voltage_swells_l3_total",
+                "dsmr_voltage_swells_l3_total",
                 "Number of voltage swells on L3"
             )
             .unwrap(),
             voltage_l1: prometheus::register_gauge!(
-                "voltage_l1_volts",
+                "dsmr_voltage_l1_volts",
                 "Instantaneous voltage on L1 in V"
             )
             .unwrap(),
             voltage_l2: prometheus::register_gauge!(
-                "voltage_l2_volts",
+                "dsmr_voltage_l2_volts",
                 "Instantaneous voltage on L2 in V"
             )
             .unwrap(),
             voltage_l3: prometheus::register_gauge!(
-                "voltage_l3_volts",
+                "dsmr_voltage_l3_volts",
                 "Instantaneous voltage on L3 in V"
             )
             .unwrap(),
             current_l1: prometheus::register_gauge!(
-                "current_l1_amperes",
+                "dsmr_current_l1_amperes",
                 "Instantaneous current on L1 in A"
             )
             .unwrap(),
             current_l2: prometheus::register_gauge!(
-                "current_l2_amperes",
+                "dsmr_current_l2_amperes",
                 "Instantaneous current on L2 in A"
             )
             .unwrap(),
             current_l3: prometheus::register_gauge!(
-                "current_l3_amperes",
+                "dsmr_current_l3_amperes",
                 "Instantaneous current on L3 in A"
             )
             .unwrap(),
             power_l1: prometheus::register_gauge!(
-                "power_l1_watts",
+                "dsmr_power_l1_watts",
                 "Instantaneous power consumption on L1 in W"
             )
             .unwrap(),
             power_l2: prometheus::register_gauge!(
-                "power_l2_watts",
+                "dsmr_power_l2_watts",
                 "Instantaneous power consumption on L2 in W"
             )
             .unwrap(),
             power_l3: prometheus::register_gauge!(
-                "power_l3_watts",
+                "dsmr_power_l3_watts",
                 "Instantaneous power consumption on L3 in W"
             )
             .unwrap(),
             return_power_l1: prometheus::register_gauge!(
-                "return_power_l1_watts",
+                "dsmr_return_power_l1_watts",
                 "Instantaneous power delivery on L1 in W"
             )
             .unwrap(),
             return_power_l2: prometheus::register_gauge!(
-                "return_power_l2_watts",
+                "dsmr_return_power_l2_watts",
                 "Instantaneous power delivery on L2 in W"
             )
             .unwrap(),
             return_power_l3: prometheus::register_gauge!(
-                "return_power_l3_watts",
+                "dsmr_return_power_l3_watts",
                 "Instantaneous power delivery on L3 in W"
             )
             .unwrap(),
             gas_consumed: prometheus::register_gauge!(
-                "gas_consumed_m3",
+                "dsmr_gas_consumed_m3",
                 "Total gas consumed in m³"
             )
             .unwrap(),
