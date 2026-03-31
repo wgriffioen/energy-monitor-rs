@@ -262,8 +262,7 @@ impl Metrics {
 }
 
 fn main() {
-    let metrics = std::sync::Arc::new(Metrics::register());
-    let metrics_clone = metrics.clone();
+    let metrics = Metrics::register();
 
     thread::spawn(move || {
         let mut port = serialport::new("/dev/ttyUSB0", 115_200)
@@ -277,7 +276,7 @@ fn main() {
         loop {
             match Telegram::read_from(&mut port) {
                 Ok(Some(telegram)) => {
-                    metrics_clone.update(&telegram);
+                    metrics.update(&telegram);
                 }
                 Ok(None) => {
                     eprintln!("Incomplete telegram received, retrying...");
